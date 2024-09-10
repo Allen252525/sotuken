@@ -9,19 +9,24 @@
 <body>
     <div class="container">
         <h1>カードゲーム</h1>
-        <button id="draw-deck" onclick="drawCards()">山札を引く</button>
+        <button id="draw-deck" onclick="drawCards()">自分の手札を引く</button>
+         <button id="enemy-draw-deck" onclick="EnemyDrawCards()">相手の手札を引く</button>
+
+        <div id="enemy-card-area">
+            <h2>敵の手札:</h2>
+            <div id="enemy-drawn-cards"></div>
+        </div>
 
         <div id="card-area">
-            <h2>引いたカード:</h2>
+            <h2>自分の手札:</h2>
             <div id="drawn-cards"></div>
         </div>
         
-
+<!---------
         <div id="selected-cards-area">
             <h2>選択したカード:</h2>
             <div id="selected-cards"></div>
         </div>
-
         <div id="totals-area">
             <h2>スートごとの合計値:</h2>
             <p>ハート: <span id="hearts-total">0</span></p>
@@ -29,8 +34,8 @@
             <p>クラブ: <span id="clubs-total">0</span></p>
             <p>スペード: <span id="spades-total">0</span></p>
         </div>
+----->
     </div>
-
     <script src="App.js"></script>
 </body>
 </html>

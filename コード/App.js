@@ -1,5 +1,5 @@
 let deckId;
-let EnamyDeckId;
+let EnemyDeckId;
 let totalHearts = 0;
 let totalDiamonds = 0;
 let totalClubs = 0;
@@ -32,6 +32,28 @@ function drawCards() {
         .then(response => response.json())
         .then(data => {
             const drawnCardsDiv = document.getElementById('drawn-cards');
+            drawnCardsDiv.innerHTML = ''; // 以前のカードをクリア
+
+            data.cards.forEach(card => {
+                const cardImg = document.createElement('img');
+                cardImg.src = card.image;
+                cardImg.alt = `${card.value} of ${card.suit}`;
+                cardImg.dataset.value = card.value;
+                cardImg.dataset.suit = card.suit;
+
+                cardImg.onclick = () => selectCard(cardImg);
+
+                drawnCardsDiv.appendChild(cardImg);
+            });
+        });
+}
+
+//enemy手札
+function EnemyDrawCards() {
+    fetch(`${deckApiUrl}/${EnemyDeckId}/draw/?count=4`)
+        .then(response => response.json())
+        .then(data => {
+            const drawnCardsDiv = document.getElementById('enemy-drawn-cards');
             drawnCardsDiv.innerHTML = ''; // 以前のカードをクリア
 
             data.cards.forEach(card => {
