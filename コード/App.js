@@ -36,7 +36,7 @@ window.onload = () => {
 
 // 山札からカードを引く
 function drawCards() {
-    fetch(`${deckApiUrl}/${deckId}/draw/?count=4`)
+    fetch(`${deckApiUrl}/${deckId}/draw/?count=5`)
         .then(response => response.json())
         .then(data => {
             const drawnCardsDiv = document.getElementById('drawn-cards');
@@ -53,14 +53,47 @@ function drawCards() {
 
                 drawnCardsDiv.appendChild(cardImg);
             });
+
+            
+            //----
+                //フェーズ表示
+                //メッセージ
+                const contentDiv = document.getElementById("content");
+                const message = document.createElement("p");
+                message.innerText = "~~~捨札フェーズ~~~\n捨てるカードをクリックで選択してください\n捨てない場合、下記ボタンで次のフェーズへ移行します";
+                contentDiv.appendChild(message);
+
+                // ボタン
+                const newButton = document.createElement("button");
+                newButton.innerText = "完了して次のフェーズへ";
+                newButton.onclick = function() {
+
+
+
+                    
+                    
+                    
+                    alert("ここにドローフェーズ");
+
+
+
+
+
+
+                };
+                contentDiv.appendChild(newButton);
+            //----
+
         });
+        const element = document.getElementById("draw-deck"); 
+        element.remove();
 }
 
 
 
 enemy手札
         function EnemyDrawCards() {
-            fetch(`${deckApiUrl}/${EnemyDeckId}/draw/?count=4`)
+            fetch(`${deckApiUrl}/${EnemyDeckId}/draw/?count=5`)
                 .then(response => response.json())
                 .then(data1 => {
                     const drawnCardsDiv = document.getElementById('enemy-drawn-cards');
@@ -78,9 +111,14 @@ enemy手札
                         drawnCardsDiv.appendChild(cardImg);
                     });
                 });
-        }
+        const element = document.getElementById("enemy-draw-deck"); 
+        element.remove();
+                
+    }
 
-
+    
+    
+    
 
 
 //  カードを選択してリストに追加、場から削除

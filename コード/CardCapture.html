@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <h1>Card Capture</h1>
+        
         <button id="draw-deck" onclick="drawCards()">自分の手札を引く</button>
          <button id="enemy-draw-deck" onclick="EnemyDrawCards()">相手の手札を引く</button>
 
@@ -17,12 +18,18 @@
             <div id="enemy-drawn-cards"></div>
         </div>
 
+
+        
+        <div id="content"></div>
+
+
         <div id="card-area">
             <h2>自分の手札:</h2>
             <div id="drawn-cards"></div>
         </div>
         
 
+<!---------
         <div id="selected-cards-area">
             <h2>選択したカード:</h2>
             <div id="selected-cards"></div>
@@ -34,8 +41,9 @@
             <p>クラブ: <span id="clubs-total">0</span></p>
             <p>スペード: <span id="spades-total">0</span></p>
         </div>
-
-    </div>
+----->
+   </div>
+    
     <script src="App.js"></script>
 </body>
 </html>
