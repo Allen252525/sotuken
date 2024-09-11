@@ -63,13 +63,22 @@ function drawCards() {
                 message.innerText = "~~~捨札フェーズ~~~\n捨てるカードをクリックで選択してください\n捨てない場合、下記ボタンで次のフェーズへ移行します";
                 contentDiv.appendChild(message);
 
-                // ボタン
+                    // カードを選択してリストに追加、場から削除
+                    function selectCard(cardElement) {
+                        const selectedCardsDiv = document.getElementById('selected-cards');
+                        const clonedCard = cardElement.cloneNode(true); // カードを選択リストに追加
+                        selectedCardsDiv.appendChild(clonedCard);
+                        //場から選択されたカードを削除
+                        cardElement.remove();
+                    }
+
+                // ボタンだす
                 const newButton = document.createElement("button");
                 newButton.innerText = "完了して次のフェーズへ";
                 newButton.onclick = function() {
 
 
-
+                
                     
                     
                     
@@ -121,17 +130,11 @@ enemy手札
     
 
 
-//  カードを選択してリストに追加、場から削除
-//  function selectCard(cardElement) {
-//      const selectedCardsDiv = document.getElementById('selected-cards');
-//      const clonedCard = cardElement.cloneNode(true); // カードを選択リストに追加
-//      selectedCardsDiv.appendChild(clonedCard);
-
+ 
 //      // カードの値をスートごとに合計値に追加
 //      updateTotals(cardElement.dataset.suit, cardElement.dataset.value);
 
-//      // 場から選択されたカードを削除
-//      cardElement.remove();
+
 //  }
 
 //  // カードの値を数値に変換する
