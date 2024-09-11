@@ -20,9 +20,6 @@ window.onload = () => {
         .then(data => {
             EnemyDeckId = data.deck_id;
         });
-
-
-
 // ゲーム開始時にデッキを取得(プレイヤーデッキ)
 
     fetch(`${deckApiUrl}/new/shuffle/?cards=2S,3S,4S,2D,3D,4D,2C,3C,4C,2H,3H,4H,X1,X2&jokers_enabled=true`)
@@ -32,31 +29,9 @@ window.onload = () => {
         });
 
 
-
-enemy手札
-function EnemyDrawCards() {
-    fetch(`${deckApiUrl}/${EnemyDeckId}/draw/?count=4`)
-        .then(response => response.json())
-        .then(data1 => {
-            const drawnCardsDiv = document.getElementById('enemy-drawn-cards');
-            drawnCardsDiv.innerHTML = ''; // 以前のカードをクリア
-
-            data1.cards.forEach(card => {
-                const cardImg = document.createElement('img');
-                cardImg.src = card.image;
-                cardImg.alt = `${card.value} of ${card.suit}`;
-                cardImg.dataset.value = card.value;
-                cardImg.dataset.suit = card.suit;
-
-                cardImg.onclick = () => selectCard(cardImg);
-
-                drawnCardsDiv.appendChild(cardImg);
-            });
-        });
-}
-
-
+        
 };
+//onload
 
 
 // 山札からカードを引く
@@ -83,51 +58,73 @@ function drawCards() {
 
 
 
+enemy手札
+        function EnemyDrawCards() {
+            fetch(`${deckApiUrl}/${EnemyDeckId}/draw/?count=4`)
+                .then(response => response.json())
+                .then(data1 => {
+                    const drawnCardsDiv = document.getElementById('enemy-drawn-cards');
+                    drawnCardsDiv.innerHTML = ''; // 以前のカードをクリア
+        
+                    data1.cards.forEach(card => {
+                        const cardImg = document.createElement('img');
+                        cardImg.src = card.image;
+                        cardImg.alt = `${card.value} of ${card.suit}`;
+                        cardImg.dataset.value = card.value;
+                        cardImg.dataset.suit = card.suit;
+        
+                        cardImg.onclick = () => selectCard(cardImg);
+        
+                        drawnCardsDiv.appendChild(cardImg);
+                    });
+                });
+        }
 
 
 
-// カードを選択してリストに追加、場から削除
-// function selectCard(cardElement) {
-//     const selectedCardsDiv = document.getElementById('selected-cards');
-//     const clonedCard = cardElement.cloneNode(true); // カードを選択リストに追加
-//     selectedCardsDiv.appendChild(clonedCard);
 
-//     // カードの値をスートごとに合計値に追加
-//     updateTotals(cardElement.dataset.suit, cardElement.dataset.value);
+//  カードを選択してリストに追加、場から削除
+//  function selectCard(cardElement) {
+//      const selectedCardsDiv = document.getElementById('selected-cards');
+//      const clonedCard = cardElement.cloneNode(true); // カードを選択リストに追加
+//      selectedCardsDiv.appendChild(clonedCard);
 
-//     // 場から選択されたカードを削除
-//     cardElement.remove();
-// }
+//      // カードの値をスートごとに合計値に追加
+//      updateTotals(cardElement.dataset.suit, cardElement.dataset.value);
 
-// // カードの値を数値に変換する
-// function getCardValue(value) {
-//     if (value === 'ACE') return 1;
-//     if (value === 'JACK' || value === 'QUEEN' || value === 'KING') return 10;
-//     return parseInt(value);
-// }
+//      // 場から選択されたカードを削除
+//      cardElement.remove();
+//  }
 
-// // スートごとの合計値を更新
-// function updateTotals(suit, value) {
-//     const cardValue = getCardValue(value);
+//  // カードの値を数値に変換する
+//  function getCardValue(value) {
+//      if (value === 'ACE') return 1;
+//      if (value === 'JACK' || value === 'QUEEN' || value === 'KING') return 10;
+//      return parseInt(value);
+//  }
 
-//     switch (suit) {
-//         case 'HEARTS':
-//             totalHearts += cardValue;
-//             document.getElementById('hearts-total').textContent = totalHearts;
-//             break;
-//         case 'DIAMONDS':
-//             totalDiamonds += cardValue;
-//             document.getElementById('diamonds-total').textContent = totalDiamonds;
-//             break;
-//         case 'CLUBS':
-//             totalClubs += cardValue;
-//             document.getElementById('clubs-total').textContent = totalClubs;
-//             break;
-//         case 'SPADES':
-//             totalSpades += cardValue;
-//             document.getElementById('spades-total').textContent = totalSpades;
-//             break;
-//         default:
-//             break;
-//     }
-// }
+//  // スートごとの合計値を更新
+//  function updateTotals(suit, value) {
+//      const cardValue = getCardValue(value);
+
+//      switch (suit) {
+//          case 'HEARTS':
+//              totalHearts += cardValue;
+//              document.getElementById('hearts-total').textContent = totalHearts;
+//              break;
+//          case 'DIAMONDS':
+//              totalDiamonds += cardValue;
+//              document.getElementById('diamonds-total').textContent = totalDiamonds;
+//              break;
+//          case 'CLUBS':
+//              totalClubs += cardValue;
+//              document.getElementById('clubs-total').textContent = totalClubs;
+//              break;
+//          case 'SPADES':
+//              totalSpades += cardValue;
+//              document.getElementById('spades-total').textContent = totalSpades;
+//              break;
+//          default:
+//              break;
+//      }
+//  }
