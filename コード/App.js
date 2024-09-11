@@ -36,7 +36,7 @@ window.onload = () => {
 
 // 山札からカードを引く
 function drawCards() {
-    fetch(`${deckApiUrl}/${deckId}/draw/?count=5`)
+    fetch(`${deckApiUrl}/${deckId}/draw/?count=4`)
         .then(response => response.json())
         .then(data => {
             const drawnCardsDiv = document.getElementById('drawn-cards');
@@ -102,7 +102,7 @@ function drawCards() {
 
 enemy手札
         function EnemyDrawCards() {
-            fetch(`${deckApiUrl}/${EnemyDeckId}/draw/?count=5`)
+            fetch(`${deckApiUrl}/${EnemyDeckId}/draw/?count=4`)
                 .then(response => response.json())
                 .then(data1 => {
                     const drawnCardsDiv = document.getElementById('enemy-drawn-cards');
