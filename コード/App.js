@@ -3,8 +3,8 @@ let EnemyDeckId;
 let totalHearts = 0;
 let totalDiamonds = 0;
 let totalClubs = 0;
-let totalSpades = 0;
-
+let totalSpades 
+let count=0;
 //デッキAPIのURL
 const deckApiUrl = "https://deckofcardsapi.com/api/deck";
 
@@ -66,13 +66,18 @@ function drawCards() {
                 // カードを選択してリストに追加、場から削除
                 
                 function selectCard(cardElement) {
-                    //裏面表示
-                    const imageUrl = "https://deckofcardsapi.com/static/img/back.png";
-                    const imgElement = document.createElement("img");
-                    imgElement.src = imageUrl;
-                    imgElement.alt = "カードの裏面";
-                    document.getElementById("image-container").appendChild(imgElement);
+                    
+                    if(count<1){
+                        //裏面表示
+                        const imageUrl = "https://deckofcardsapi.com/static/img/back.png";
+                        const imgElement = document.createElement("img");
+                        imgElement.src = imageUrl;
+                        imgElement.alt = "カードの裏面";
+                        document.getElementById("image-container").appendChild(imgElement);
 
+                    }
+                    count++;
+                    document.getElementById('total').textContent = count;
 
 
                     
