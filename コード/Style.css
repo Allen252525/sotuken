@@ -32,11 +32,13 @@ button:hover {
     background-color: #005f73;
 }
 
-#drawn-cards img, #selected-cards img, #enemy-drawn-cards img{
+
+#drawn-cards img, #selected-cards img, #enemy-drawn-cards img,#selected-cards-sutehuda img{
     width: 80px;
     margin: 5px;
     cursor: pointer;
 }
+
 
 h2 {
     font-size: 20px;

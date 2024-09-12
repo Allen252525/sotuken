@@ -60,36 +60,34 @@ function drawCards() {
                 //メッセージ
                 const contentDiv = document.getElementById("content");
                 const message = document.createElement("p");
-                message.innerText = "~~~捨札フェーズ~~~\n捨てるカードをクリックで選択してください\n捨てない場合、下記ボタンで次のフェーズへ移行します";
+                message.innerText = "~~~捨札フェーズ~~~\n捨てるカードをクリックで選択してください\n捨てない場合、下記ボタンでドローフェーズへ移行します";
                 contentDiv.appendChild(message);
 
-                    // カードを選択してリストに追加、場から削除
-                    function selectCard(cardElement) {
-                        const selectedCardsDiv = document.getElementById('selected-cards');
-                        const clonedCard = cardElement.cloneNode(true); // カードを選択リストに追加
-                        selectedCardsDiv.appendChild(clonedCard);
-                        //場から選択されたカードを削除
-                        cardElement.remove();
-                    }
+                // カードを選択してリストに追加、場から削除
+                function selectCard(cardElement) {
+                    const selectedCardsDiv = document.getElementById('selected-cards');
+                    const clonedCard = cardElement.cloneNode(true); // カードを選択リストに追加
+                    selectedCardsDiv.appendChild(clonedCard);
+                    //場から選択されたカードを削除
+                    cardElement.remove();
 
+                }
                 // ボタンだす
                 const newButton = document.createElement("button");
                 newButton.innerText = "完了して次のフェーズへ";
-                newButton.onclick = function() {
-
-
-                
-                    
-                    
-                    
+                newButton.onclick = function(cardElement) {
+                    //捨札
+                    const selectedCardsDivs = document.getElementById('selected-cards-sutehuda');
+                    const boti = cardElement.cloneNode(true);//カードを捨札エリアに追加
+                    selectedCardsDivs.appendChild(boti);
+                    //場から選択されたカードを削除
+                    cardElement.remove();
                     alert("ここにドローフェーズ");
-
-
-
-
-
+                    
 
                 };
+
+                
                 contentDiv.appendChild(newButton);
             //----
 
