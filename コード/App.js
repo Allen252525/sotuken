@@ -6,6 +6,9 @@ let totalClubs = 0;
 let totalSpades 
 let count=0;
 let count2=0;
+let element
+let faze=0;
+
 //デッキAPIのURL
 const deckApiUrl = "https://deckofcardsapi.com/api/deck";
 
@@ -37,6 +40,7 @@ window.onload = () => {
 
 // 山札からカードを引く
 function drawCards() {
+    faza=1;//エネミーフェーズに移行
     fetch(`${deckApiUrl}/${deckId}/draw/?count=4`)
         .then(response => response.json())
         .then(data => {
@@ -60,10 +64,34 @@ function drawCards() {
                 //フェーズ表示
                 //メッセージ
                 if(count2==0){
-                const contentDiv = document.getElementById("content");
-                const message = document.createElement("p");
-                message.innerText = "~~~捨札フェーズ~~~\n捨てるカードをクリックで選択してください\n捨てない場合、下記ボタンでドローフェーズへ移行します";
-                contentDiv.appendChild(message);
+                    faze=2;//捨札フェーズに移行
+                    const contentDiv = document.getElementById("content");
+                    const message = document.createElement("p");
+                    message.innerText = "~~~捨札フェーズ~~~\n捨てるカードをクリックで選択してください\n捨てない場合、下記ボタンでドローフェーズへ移行します";
+                    contentDiv.appendChild(message);
+
+                    // ボタンだす
+                    const newButton = document.createElement("button");
+                    newButton.innerText = "完了してドローフェーズへ";
+                    newButton.onclick = function() {
+                    
+                        
+                        faza=3;//ドローフェーズに移行
+                        contentDiv.remove();
+                        element = document.getElementById("draw-deck"); 
+                        
+
+
+
+
+
+                    
+
+                    };
+                    contentDiv.appendChild(newButton);
+
+
+
                 }
                 count2++;
                 // カードを選択してリストに追加、場から削除
@@ -90,23 +118,26 @@ function drawCards() {
                     
 
                 }
-                // ボタンだす
-                const newButton = document.createElement("button");
-                newButton.innerText = "完了して次のフェーズへ";
-                newButton.onclick = function() {
-                    
-                    alert("ここにドローフェーズ");
-                    
-
-                };
-
                 
-                contentDiv.appendChild(newButton);
             //----
 
         });
-        const element = document.getElementById("draw-deck"); 
-       // element.remove();
+        
+        ////////ドローフェイズになったらこいつを無効化
+        element = document.getElementById("draw-deck"); 
+        if(faza==3){
+            
+        }else{
+            
+            //element.remove();
+            //alert("ここにドローフェーズ");
+        }
+
+        
+        
+        
+        
+        
 }
 
 
@@ -133,6 +164,7 @@ function drawCards() {
                 });
         const element = document.getElementById("enemy-draw-deck"); 
         element.remove();
+        
                 
     }
 
