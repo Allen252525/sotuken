@@ -5,6 +5,7 @@ let totalDiamonds = 0;
 let totalClubs = 0;
 let totalSpades 
 let count=0;
+let count2=0;
 //デッキAPIのURL
 const deckApiUrl = "https://deckofcardsapi.com/api/deck";
 
@@ -58,11 +59,13 @@ function drawCards() {
             //----
                 //フェーズ表示
                 //メッセージ
+                if(count2==0){
                 const contentDiv = document.getElementById("content");
                 const message = document.createElement("p");
                 message.innerText = "~~~捨札フェーズ~~~\n捨てるカードをクリックで選択してください\n捨てない場合、下記ボタンでドローフェーズへ移行します";
                 contentDiv.appendChild(message);
-
+                }
+                count2++;
                 // カードを選択してリストに追加、場から削除
                 
                 function selectCard(cardElement) {
@@ -103,12 +106,12 @@ function drawCards() {
 
         });
         const element = document.getElementById("draw-deck"); 
-        element.remove();
+       // element.remove();
 }
 
 
 
-enemy手札
+//enemy手札
         function EnemyDrawCards() {
             fetch(`${deckApiUrl}/${EnemyDeckId}/draw/?count=4`)
                 .then(response => response.json())
