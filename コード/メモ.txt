@@ -162,3 +162,35 @@ body {
 #msg a:hover {
     opacity: 0.7;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//捨札
+                    const selectedCardsDivs = document.getElementById('selected-cards-sutehuda');
+                    const boti = cardElement.cloneNode(true);//カードを捨札エリアに追加
+                    selectedCardsDivs.appendChild(boti);
+                    //場から選択されたカードを削除
+                    cardElement.remove();

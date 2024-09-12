@@ -33,7 +33,7 @@ button:hover {
 }
 
 
-#drawn-cards img, #selected-cards img, #enemy-drawn-cards img,#selected-cards-sutehuda img{
+#drawn-cards img, #selected-cards img, #enemy-drawn-cards img,#image-container img{
     width: 80px;
     margin: 5px;
     cursor: pointer;

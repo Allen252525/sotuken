@@ -64,24 +64,29 @@ function drawCards() {
                 contentDiv.appendChild(message);
 
                 // カードを選択してリストに追加、場から削除
+                
                 function selectCard(cardElement) {
-                    const selectedCardsDiv = document.getElementById('selected-cards');
-                    const clonedCard = cardElement.cloneNode(true); // カードを選択リストに追加
-                    selectedCardsDiv.appendChild(clonedCard);
+                    //裏面表示
+                    const imageUrl = "https://deckofcardsapi.com/static/img/back.png";
+                    const imgElement = document.createElement("img");
+                    imgElement.src = imageUrl;
+                    imgElement.alt = "カードの裏面";
+                    document.getElementById("image-container").appendChild(imgElement);
+
+
+
+                    
                     //場から選択されたカードを削除
                     cardElement.remove();
+
+                    
 
                 }
                 // ボタンだす
                 const newButton = document.createElement("button");
                 newButton.innerText = "完了して次のフェーズへ";
-                newButton.onclick = function(cardElement) {
-                    //捨札
-                    const selectedCardsDivs = document.getElementById('selected-cards-sutehuda');
-                    const boti = cardElement.cloneNode(true);//カードを捨札エリアに追加
-                    selectedCardsDivs.appendChild(boti);
-                    //場から選択されたカードを削除
-                    cardElement.remove();
+                newButton.onclick = function() {
+                    
                     alert("ここにドローフェーズ");
                     
 
