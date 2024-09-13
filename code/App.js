@@ -93,9 +93,30 @@ function drawCards() {
                             newButton2.innerText = "完了して捕獲フェーズへ";
                             
 
-
+                            faze=4;
                             newButton2.onclick = function() {
-                                            
+                                if(faze==4){
+                                    contentDiv.remove();
+                                    contentDiv = document.getElementById("content3");
+                                    const message = document.createElement("p");
+                                    message.innerText = "~~~捕獲フェーズ~~~\n敵を捕獲してください\n下記ボタンでエネミーフェーズへ移行します";
+                                    contentDiv.appendChild(message);
+                                    alert("ここに捕獲フェーズ");
+                                    contentDiv = document.getElementById("content3");
+                                    const newButton3 = document.createElement("button");
+                                    
+                                    newButton3.innerText = "完了してエネミーフェーズへ";
+                                    
+        
+                                    faze=0;
+                                    newButton3.onclick = function() {
+                                                    
+                                        
+                        
+                                    }
+                                    contentDiv.appendChild(newButton3);
+
+                                }   
                                 
                 
                             }
