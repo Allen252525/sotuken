@@ -9,6 +9,8 @@ let count2=0;
 let element;
 let faze=0;
 let contentDiv;
+let enemy;
+let hand;
 
 //デッキAPIのURL
 const deckApiUrl = "https://deckofcardsapi.com/api/deck";
@@ -37,7 +39,31 @@ window.onload = () => {
         
 };
 //onload
+//enemy手札
+function EnemyDrawCards() {
+    fetch(`${deckApiUrl}/${EnemyDeckId}/draw/?count=4`)
+        .then(response => response.json())
+        .then(data1 => {
+            const drawnCardsDiv = document.getElementById('enemy-drawn-cards');
+            drawnCardsDiv.innerHTML = ''; // 以前のカードをクリア
 
+            data1.cards.forEach(card => {
+                const cardImg = document.createElement('img');
+                cardImg.src = card.image;
+                cardImg.alt = `${card.value} of ${card.suit}`;
+                cardImg.dataset.value = card.value;
+                cardImg.dataset.suit = card.suit;
+
+                cardImg.onclick = () => selectCard(cardImg);
+
+                drawnCardsDiv.appendChild(cardImg);
+            });
+        });
+const element = document.getElementById("enemy-draw-deck"); 
+element.remove();
+
+        
+}
 
 // 山札からカードを引く
 function drawCards() {
@@ -181,31 +207,7 @@ function drawCards() {
 
 
 
-//enemy手札
-        function EnemyDrawCards() {
-            fetch(`${deckApiUrl}/${EnemyDeckId}/draw/?count=4`)
-                .then(response => response.json())
-                .then(data1 => {
-                    const drawnCardsDiv = document.getElementById('enemy-drawn-cards');
-                    drawnCardsDiv.innerHTML = ''; // 以前のカードをクリア
-        
-                    data1.cards.forEach(card => {
-                        const cardImg = document.createElement('img');
-                        cardImg.src = card.image;
-                        cardImg.alt = `${card.value} of ${card.suit}`;
-                        cardImg.dataset.value = card.value;
-                        cardImg.dataset.suit = card.suit;
-        
-                        cardImg.onclick = () => selectCard(cardImg);
-        
-                        drawnCardsDiv.appendChild(cardImg);
-                    });
-                });
-        const element = document.getElementById("enemy-draw-deck"); 
-        element.remove();
-        
-                
-    }
+
 
     
     
