@@ -6,8 +6,9 @@ let totalClubs = 0;
 let totalSpades 
 let count=0;
 let count2=0;
-let element
+let element;
 let faze=0;
+let contentDiv;
 
 //デッキAPIのURL
 const deckApiUrl = "https://deckofcardsapi.com/api/deck";
@@ -65,7 +66,7 @@ function drawCards() {
                 //メッセージ
                 if(count2==0){
                     faze=2;//捨札フェーズに移行
-                    const contentDiv = document.getElementById("content");
+                    contentDiv = document.getElementById("content");
                     const message = document.createElement("p");
                     message.innerText = "~~~捨札フェーズ~~~\n捨てるカードをクリックで選択してください\n捨てない場合、下記ボタンでドローフェーズへ移行します";
                     contentDiv.appendChild(message);
@@ -76,12 +77,24 @@ function drawCards() {
                     newButton.onclick = function() {
                     
                         
-                        faza=3;//ドローフェーズに移行
+                        faze=3;//ドローフェーズに移行
                         contentDiv.remove();
                         element = document.getElementById("draw-deck"); 
-                        
-
-
+                        if(faze==3){
+                            alert("ここにドローフェーズ");
+                            contentDiv = document.getElementById("content2");
+                            const newButton2 = document.createElement("button");
+                            newButton2.innerText = "完了して捕獲フェーズへ";
+                            
+                            newButton2.onclick = function() {
+                
+                            }
+                            contentDiv.appendChild(newButton2);
+                        }else{
+                            
+                            //element.remove();
+                            //alert("ここにドローフェーズ");
+                        }
 
 
 
@@ -89,10 +102,12 @@ function drawCards() {
 
                     };
                     contentDiv.appendChild(newButton);
+                    
 
 
 
                 }
+                
                 count2++;
                 // カードを選択してリストに追加、場から削除
                 
@@ -125,13 +140,6 @@ function drawCards() {
         
         ////////ドローフェイズになったらこいつを無効化
         element = document.getElementById("draw-deck"); 
-        if(faza==3){
-            
-        }else{
-            
-            //element.remove();
-            //alert("ここにドローフェーズ");
-        }
 
         
         
