@@ -86,7 +86,7 @@ function drawCards() {
                             const message = document.createElement("p");
                             message.innerText = "~~~ドローフェーズ~~~\n自分の手札を引いてください\n下記ボタンで捕獲フェーズへ移行します";
                             contentDiv.appendChild(message);
-                            alert("ここにドローフェーズ");
+                            //alert("ここにドローフェーズ");
                             contentDiv = document.getElementById("content2");
                             const newButton2 = document.createElement("button");
                             
@@ -101,7 +101,7 @@ function drawCards() {
                                     const message = document.createElement("p");
                                     message.innerText = "~~~捕獲フェーズ~~~\n敵を捕獲してください\n下記ボタンでエネミーフェーズへ移行します";
                                     contentDiv.appendChild(message);
-                                    alert("ここに捕獲フェーズ");
+                                    //alert("ここに捕獲フェーズ");
                                     contentDiv = document.getElementById("content3");
                                     const newButton3 = document.createElement("button");
                                     
