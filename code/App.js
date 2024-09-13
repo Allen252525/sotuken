@@ -81,12 +81,22 @@ function drawCards() {
                         contentDiv.remove();
                         element = document.getElementById("draw-deck"); 
                         if(faze==3){
+
+                            contentDiv = document.getElementById("content2");
+                            const message = document.createElement("p");
+                            message.innerText = "~~~ドローフェーズ~~~\n自分の手札を引いてください\n下記ボタンで捕獲フェーズへ移行します";
+                            contentDiv.appendChild(message);
                             alert("ここにドローフェーズ");
                             contentDiv = document.getElementById("content2");
                             const newButton2 = document.createElement("button");
+                            
                             newButton2.innerText = "完了して捕獲フェーズへ";
                             
+
+
                             newButton2.onclick = function() {
+                                            
+                                
                 
                             }
                             contentDiv.appendChild(newButton2);
